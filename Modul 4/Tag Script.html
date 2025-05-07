@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Inline JS dalam Tag Script</title>
+    <script>
+
+        function sapaUser() {
+            const nama = prompt("Siapa nama Anda?");
+            if (nama) {
+                alert(`Halo, ${nama}! Selamat datang!`);
+            }
+        }
+
+        function hitung() {
+            const angka1 = parseFloat(prompt("Masukkan angka pertama:"));
+            const angka2 = parseFloat(prompt("Masukkan angka kedua:"));
+
+            if (!isNaN(angka1) && !isNaN(angka2)) {
+                const hasil = angka1 + angka2;
+                document.getElementById('hasil').innerHTML = `Hasil: ${hasil}`;
+            } else {
+                alert('Masukkan angka yang valid!');
+            }
+        }
+    </script>
+</head>
+
+<body>
+    <h2>Contoh 2: JavaScript dalam Tag Script</h2>
+
+    <button onclick="sapaUser()">Sapa Saya</button>
+    <button onclick="hitung()">Hitung Dua Angka</button>
+    <div id="hasil" style="margin-top:10px; padding:10px; border:1px solid #ccc;"></div>
+</body>
+
+</html>

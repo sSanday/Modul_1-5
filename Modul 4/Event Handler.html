@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Inline JS dalam Atribut</title>
+</head>
+
+<body>
+    <h2>Contoh 1: Event Handler Inline</h2>
+
+    <button onclick="alert('Anda menekan tombol!')">Klik untuk Alert</button>
+
+    <button onclick="document.getElementById('teks').style.color='red'">Ubah Warna Teks</button>
+    <p id="teks">Teks ini akan berubah warna</p>
+
+    <button onclick="
+        document.getElementById('demo1').innerHTML='Teks diubah!'; 
+        console.log('Tombol diklik');
+        this.style.backgroundColor='yellow'
+    ">Ubah Banyak Hal</button>
+    <p id="demo1">Teks asli</p>
+</body>
+
+</html>
