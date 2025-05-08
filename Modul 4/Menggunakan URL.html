@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>JavaScript Module dari URL</title>
+</head>
+
+<body>
+    <h1>Contoh Module dari URL</h1>
+
+    <button id="btnCalculate">Hitung Faktorial</button>
+    <input type="number" id="inputNumber" placeholder="Masukkan angka">
+    <div id="calculationResult"></div>
+
+    <script type="module">
+        import { factorial } from 'https://cdn.jsdelivr.net/npm/mathjs@10.6.4/+esm';
+
+        document.getElementById('btnCalculate').addEventListener('click', function () {
+            const number = parseInt(document.getElementById('inputNumber').value);
+            if (!isNaN(number) && number >= 0) {
+                const result = factorial(number);
+                document.getElementById('calculationResult').innerHTML =
+                    `${number}! = ${result}`;
+            } else {
+                alert('Masukkan angka yang valid (bilangan bulat positif)');
+            }
+        });
+    </script>
+</body>
+
+</html>
