@@ -1,0 +1,520 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Muhammad Sandi Zakariya - Frontend Developer</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Gray Theme with White Text */
+        :root {
+            --primary-color: #ffffff;
+            /* White */
+            --secondary-color: #e0e0e0;
+            /* Light Gray */
+            --accent-color: #bdbdbd;
+            /* Medium Gray */
+            --bg-color: #424242;
+            /* Dark Gray background */
+            --sidebar-bg: #303030;
+            /* Darker Gray sidebar */
+            --card-bg: #525252;
+            /* Card background */
+            --text-color: #ffffff;
+            /* White text */
+            --light-text: #e0e0e0;
+            /* Light gray text */
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+
+        .container {
+            display: flex;
+            min-height: 100vh;
+        }
+
+        /* Sidebar Styles */
+        .sidebar {
+            width: 300px;
+            background-color: var(--sidebar-bg);
+            padding: 40px 30px;
+            display: flex;
+            flex-direction: column;
+            position: fixed;
+            height: 100vh;
+            border-right: 1px solid #555;
+        }
+
+        .profile h1 {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: var(--primary-color);
+            margin-bottom: 30px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .profile h2 {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 5px;
+            color: var(--text-color);
+        }
+
+        .profile h3 {
+            font-size: 1.2rem;
+            font-weight: 400;
+            color: var(--secondary-color);
+            margin-bottom: 40px;
+        }
+
+        .menu ul {
+            list-style: none;
+            margin-bottom: 40px;
+        }
+
+        .menu li {
+            margin-bottom: 15px;
+        }
+
+        .menu a {
+            text-decoration: none;
+            color: var(--secondary-color);
+            font-size: 1.1rem;
+            transition: color 0.3s ease;
+        }
+
+        .menu a:hover {
+            color: var(--primary-color);
+        }
+
+        .contact-info {
+            margin-top: auto;
+        }
+
+        .contact-info p:first-child {
+            font-weight: 600;
+            color: var(--primary-color);
+            margin-bottom: 5px;
+        }
+
+        .contact-info p {
+            color: var(--light-text);
+            font-size: 0.9rem;
+            margin-bottom: 5px;
+        }
+
+        /* Main Content Styles */
+        .main-content {
+            flex: 1;
+            padding: 60px 80px;
+            margin-left: 300px;
+        }
+
+        section {
+            margin-bottom: 80px;
+            padding: 40px;
+            background: var(--card-bg);
+            border-radius: 10px;
+            border: 1px solid #555;
+        }
+
+        h1,
+        h2 {
+            font-weight: 700;
+            margin-bottom: 20px;
+            color: var(--text-color);
+        }
+
+        h1 {
+            font-size: 2.5rem;
+        }
+
+        h2 {
+            font-size: 2rem;
+            margin-bottom: 30px;
+            position: relative;
+        }
+
+        h2::after {
+            content: '';
+            display: block;
+            width: 50px;
+            height: 3px;
+            background: var(--primary-color);
+            margin-top: 10px;
+        }
+
+        p {
+            color: var(--secondary-color);
+            margin-bottom: 20px;
+            line-height: 1.8;
+        }
+
+        /* Home Section with Photo */
+        #home {
+            text-align: center;
+            padding: 60px;
+            position: relative;
+            overflow: hidden;
+            border: none;
+            background: linear-gradient(rgba(66, 66, 66, 0.8), rgba(66, 66, 66, 0.8));
+        }
+
+        .profile-photo {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 5px solid var(--primary-color);
+            margin: 0 auto 30px;
+            display: block;
+        }
+
+        /* Services Section */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+
+        .service-card {
+            padding: 25px;
+            border-radius: 8px;
+            background: #424242;
+            transition: all 0.3s ease;
+            border: 1px solid #555;
+        }
+
+        .service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+            border-color: var(--primary-color);
+        }
+
+        .service-card i {
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            margin-bottom: 15px;
+        }
+
+        .service-card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+            color: var(--text-color);
+        }
+
+        /* Portfolio Section */
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .portfolio-item {
+            position: relative;
+            border-radius: 8px;
+            overflow: hidden;
+            height: 250px;
+            border: 1px solid #555;
+        }
+
+        .portfolio-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .portfolio-item:hover img {
+            transform: scale(1.1);
+        }
+
+        .portfolio-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: rgba(0, 0, 0, 0.8);
+            color: white;
+            padding: 20px;
+            transform: translateY(100%);
+            transition: transform 0.3s ease;
+            border-top: 2px solid var(--primary-color);
+        }
+
+        .portfolio-item:hover .portfolio-overlay {
+            transform: translateY(0);
+        }
+
+        /* Contact Section */
+        .contact-container {
+            display: flex;
+            gap: 40px;
+        }
+
+        .contact-info {
+            flex: 1;
+        }
+
+        .contact-info p {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .contact-form {
+            flex: 1;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        input,
+        textarea {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #555;
+            border-radius: 5px;
+            font-family: inherit;
+            background: #424242;
+            color: white;
+        }
+
+        textarea {
+            min-height: 150px;
+            resize: vertical;
+        }
+
+        button {
+            background: var(--primary-color);
+            color: #333;
+            border: none;
+            padding: 12px 30px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: background 0.3s ease;
+        }
+
+        button:hover {
+            background: var(--accent-color);
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .social-links a {
+            color: var(--light-text);
+            font-size: 1.2rem;
+            transition: color 0.3s ease;
+        }
+
+        .social-links a:hover {
+            color: var(--primary-color);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .container {
+                flex-direction: column;
+            }
+
+            .sidebar {
+                width: 100%;
+                position: static;
+                height: auto;
+                border-right: none;
+                border-bottom: 1px solid #555;
+            }
+
+            .main-content {
+                margin-left: 0;
+                padding: 40px;
+            }
+
+            .contact-container {
+                flex-direction: column;
+            }
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2rem;
+            }
+
+            h2 {
+                font-size: 1.8rem;
+            }
+
+            .main-content {
+                padding: 30px;
+            }
+
+            section {
+                padding: 30px;
+            }
+
+            .profile-photo {
+                width: 150px;
+                height: 150px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <!-- Left Sidebar -->
+        <aside class="sidebar">
+            <div class="profile">
+                <h1>Muhammad Sandi Zakariya</h1>
+                <h2>Sandi</h2>
+                <h3>Frontend Developer</h3>
+            </div>
+
+            <nav class="menu">
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#services">Services</a></li>
+                    <li><a href="#portfolio">Portfolio</a></li>
+                    <li><a href="#about">About Us</a></li>
+                    <li><a href="#contact">Contact Us</a></li>
+                </ul>
+            </nav>
+
+            <div class="contact-info">
+                <p>CONTACT INFO</p>
+                <p><i class="fas fa-envelope"></i> sandizakariya77@gmail.com</p>
+                <p><i class="fas fa-phone"></i> 084757635963</p>
+                <p><i class="fas fa-map-marker-alt"></i> Batu City</p>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Home Section with Photo -->
+            <section id="home">
+                <img src="WhatsApp Image 2025-04-23 at 00.16.15_258723a7.jpg" alt="Hannah Soldate"
+                    class="profile-photo">
+                <h1>Hi, I'm Sandi</h1>
+                <p>A passionate Frontend Developer creating beautiful, functional websites and applications.</p>
+                <p>With 5+ years of experience in web development, I specialize in creating responsive, user-friendly
+                    interfaces that deliver exceptional user experiences.</p>
+            </section>
+
+            <!-- Services Section -->
+            <section id="services">
+                <h2>Services</h2>
+                <div class="services-grid">
+                    <div class="service-card">
+                        <i class="fas fa-laptop-code"></i>
+                        <h3>Web Development</h3>
+                        <p>Custom website development using modern technologies like React, Vue, and Angular.</p>
+                    </div>
+                    <div class="service-card">
+                        <i class="fas fa-mobile-alt"></i>
+                        <h3>Mobile Development</h3>
+                        <p>Cross-platform mobile applications built with React Native and Flutter.</p>
+                    </div>
+                    <div class="service-card">
+                        <i class="fas fa-paint-brush"></i>
+                        <h3>UI/UX Design</h3>
+                        <p>Beautiful, intuitive interfaces designed with user experience in mind.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Portfolio Section -->
+            <section id="portfolio">
+                <h2>Portfolio</h2>
+                <div class="portfolio-grid">
+                    <div class="portfolio-item">
+                        <img src="https://images.unsplash.com/photo-1547658719-da2b51169166?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80"
+                            alt="E-Commerce Project">
+                        <div class="portfolio-overlay">
+                            <h3>E-Commerce Platform</h3>
+                            <p>React, Node.js, MongoDB</p>
+                        </div>
+                    </div>
+                    <div class="portfolio-item">
+                        <img src="https://images.unsplash.com/photo-1555774698-0b77e0d5fac6?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80"
+                            alt="Health App">
+                        <div class="portfolio-overlay">
+                            <h3>Health Tracker App</h3>
+                            <p>React Native, Firebase</p>
+                        </div>
+                    </div>
+                    <div class="portfolio-item">
+                        <img src="https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80"
+                            alt="CRM System">
+                        <div class="portfolio-overlay">
+                            <h3>Business CRM</h3>
+                            <p>Vue.js, Laravel</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- About Section -->
+            <section id="about">
+                <h2>About Us</h2>
+                <p>We are a small but mighty team of frontend developers dedicated to creating exceptional digital
+                    experiences. Founded in 2018, we've worked with clients ranging from startups to Fortune 500
+                    companies.</p>
+                <p>Our approach combines technical expertise with creative problem-solving to deliver solutions that not
+                    only look great but also drive real business results.</p>
+                <p>When we're not coding, you can find us attending tech meetups, contributing to open source projects,
+                    or exploring the latest web technologies.</p>
+            </section>
+
+            <!-- Contact Section -->
+            <section id="contact">
+                <h2>Contact Us</h2>
+                <div class="contact-container">
+                    <div class="contact-info">
+                        <p><i class="fas fa-map-marker-alt"></i> Batu City</p>
+                        <p><i class="fas fa-phone"></i> 084757635963</p>
+                        <p><i class="fas fa-envelope"></i> sandizakaria77@gmail.com</p>
+                        <div class="social-links">
+                            <a href="#"><i class="fab fa-facebook-f"></i></a>
+                            <a href="#"><i class="fab fa-twitter"></i></a>
+                            <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                            <a href="#"><i class="fab fa-github"></i></a>
+                        </div>
+                    </div>
+                    <form class="contact-form">
+                        <div class="form-group">
+                            <input type="text" placeholder="Your Name" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="email" placeholder="Your Email" required>
+                        </div>
+                        <div class="form-group">
+                            <textarea placeholder="Your Message" required></textarea>
+                        </div>
+                        <button type="submit">Send Message</button>
+                    </form>
+                </div>
+            </section>
+        </main>
+    </div>
+</body>
+
+</html>
